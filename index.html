@@ -193,6 +193,7 @@ body.in-app main{padding-bottom:84px}
 <section class="view" id="v-app">
  <div class="ph"><div class="ic" id="a-ic"></div><div><h1 id="a-name"></h1><div class="dev" id="a-dev"></div></div></div>
  <div class="stats">
+  <div id="st-dlw" hidden><b id="st-dl"></b><small>Downloads</small></div>
   <div><b id="st-rate">-</b><small id="st-cnt">Ratings</small></div>
   <div><b id="a-plat"></b><small>Platform</small></div>
   <div><b id="ver">Pending</b><small>Version</small></div>
@@ -353,7 +354,7 @@ var APPS=[];
   var list=APPS.filter(function(a){return (cat==='All'||a.cat===cat)&&(!q||(a.name+' '+a.cat).toLowerCase().indexOf(q)>=0)});
   $('agrid').innerHTML=list.map(function(a){
    var get=a.apkUrl?'<a class="get" href="'+esc(a.apkUrl)+'" download>Get</a>':'<a class="get off" href="#/'+esc(a.id)+'">Soon</a>';
-   return '<div class="atile"><a class="main" href="#/'+esc(a.id)+'"><div class="ic'+(a.iconFull?' full':'')+'">'+iconHtml(a)+'</div><div style="min-width:0"><h3>'+esc(a.name)+'</h3><div class="r" data-rate="'+esc(a.id)+'">'+(window.DNR&&window.DNR[a.id]||'&nbsp;')+'</div></div></a>'+get+'</div>'}).join('');
+   return '<div class="atile"><a class="main" href="#/'+esc(a.id)+'"><div class="ic'+(a.iconFull?' full':'')+'">'+iconHtml(a)+'</div><div style="min-width:0"><h3>'+esc(a.name)+'</h3><div class="r" data-rate="'+esc(a.id)+'">'+(window.DNR&&window.DNR[a.id]||'&nbsp;')+'</div>'+(dlTxt(a.id)?'<div class="r">'+dlTxt(a.id)+'</div>':'')+'</div></a>'+get+'</div>'}).join('');
   $('noapps').hidden=list.length>0;
  }
  window.DN={apps:APPS,render:render};
@@ -361,11 +362,23 @@ var APPS=[];
  $('q').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();render()});
  $('chips').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(b){cat=b.dataset.c;render()}});
  render();
+ var DLN={};
+ function dlFmt(n){return n>=1e6?(n/1e6).toFixed(1).replace('.0','')+'M':n>=1e3?(n/1e3).toFixed(1).replace('.0','')+'K':String(n)}
+ function dlTxt(id){var n=DLN[id];return n>0?dlFmt(n)+(n===1?' download':' downloads'):''}
+ function dlStat(a){var w=document.getElementById('st-dlw');if(!w||!a)return;var n=DLN[a.id];if(n>0){document.getElementById('st-dl').textContent=dlFmt(n);w.hidden=false}else w.hidden=true}
+ function dlRepo(a){var r=a.release||{};if(r.repo)return r.repo;var m=(a.apkUrl||r.apkUrl||'').match(/github\.com\/([^\/]+\/[^\/]+)\/releases\//);return m?m[1]:''}
+ function dlLoad(){var by={};APPS.forEach(function(a){var r=dlRepo(a);if(r)(by[r]=by[r]||[]).push(a)});
+  Object.keys(by).forEach(function(repo){
+   var ck='dn_dl_'+repo,c=null;try{c=JSON.parse(sessionStorage.getItem(ck)||'null')}catch(e){}
+   function use(rel){by[repo].forEach(function(a){var pre=(a.release&&a.release.assetPrefix||'').toLowerCase(),t=0;rel.forEach(function(x){(x.assets||[]).forEach(function(s){var nm=(s.name||'').toLowerCase();if(/\.apk$/.test(nm)&&(!pre||nm.indexOf(pre)===0))t+=(s.download_count||0)})});DLN[a.id]=t});render();dlStat(cur)}
+   if(c&&Date.now()-c.t<6e5){use(c.d);return}
+   fetch('https://api.github.com/repos/'+repo+'/releases?per_page=100',{headers:{Accept:'application/vnd.github+json'}}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rel){if(!Array.isArray(rel))throw 0;var slim=rel.map(function(x){return{assets:(x.assets||[]).map(function(s){return{name:s.name,download_count:s.download_count}})}});try{sessionStorage.setItem(ck,JSON.stringify({t:Date.now(),d:slim}))}catch(e){}use(slim)}).catch(function(){})})}
+ dlLoad();
  function applyApp(a){
   cur=a;var $=function(i){return document.getElementById(i)};
   $('ttl').textContent=a.name;$('bic').className='ic bic'+(a.iconFull?' full':'');$('bic').innerHTML=iconHtml(a);$('a-name').textContent=a.name;$('a-dev').textContent=a.developer;
   $('a-ic').className='ic'+(a.iconFull?' full':'');$('a-ic').innerHTML=iconHtml(a);
-  $('a-plat').textContent=a.platform;
+  $('a-plat').textContent=a.platform;dlStat(a);
   var ver=a.release&&a.release.version||'Pending';$('ver').textContent=ver;
   $('a-about').textContent=a.about;$('a-tags').innerHTML=(a.tags||[]).map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('');$('a-tags').hidden=!(a.tags&&a.tags.length);
   var kv=[['Package',a.package],['Platform',a.platform],['Version',ver],['Offered by',a.offeredBy]].filter(function(r){return r[1]});
