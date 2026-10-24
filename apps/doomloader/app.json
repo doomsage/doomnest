@@ -3,7 +3,7 @@
   "name": "Doomloader",
   "developer": "Doomsage",
   "category": "Downloader",
-  "icon": "icon.svg",
+  "icon": "1-dl-icon.png",
   "about": "Doomloader is a video and audio downloader for Android, built by Doomsage on top of the open source Seal project.",
   "tags": [
     "Downloader",
@@ -34,5 +34,6 @@
       "title": "Open and install",
       "text": "Open the downloaded file and tap Install."
     }
-  ]
+  ],
+  "iconFull": true
 }
