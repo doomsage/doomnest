@@ -192,7 +192,6 @@ body.in-app main{padding-bottom:84px}
   <div><b id="st-rate">-</b><small id="st-cnt">Ratings</small></div>
   <div><b id="a-plat"></b><small>Platform</small></div>
   <div><b id="ver">Pending</b><small>Version</small></div>
-  <div><b id="a-lic"></b><small>License</small></div>
  </div>
  <div class="install"><a class="btn main" id="dl" aria-disabled="true" download>Not released yet</a></div>
  <p class="note" id="dl-note">The Android APK has not been published yet. This button turns on when it is.</p>
@@ -353,10 +352,10 @@ var APPS=[];
   cur=a;var $=function(i){return document.getElementById(i)};
   $('ttl').textContent=a.name;$('a-name').textContent=a.name;$('a-dev').textContent=a.developer;
   $('a-ic').className='ic'+(a.iconFull?' full':'');$('a-ic').innerHTML=iconHtml(a);
-  $('a-plat').textContent=a.platform;$('a-lic').textContent=a.license;
+  $('a-plat').textContent=a.platform;
   var ver=a.release&&a.release.version||'Pending';$('ver').textContent=ver;
   $('a-about').textContent=a.about;$('a-tags').innerHTML=(a.tags||[]).map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('');
-  var kv=[['Package',a.package],['Platform',a.platform],['Version',ver],['Based on',a.basedOn],['Offered by',a.offeredBy]].filter(function(r){return r[1]});
+  var kv=[['Package',a.package],['Platform',a.platform],['Version',ver],['Offered by',a.offeredBy]].filter(function(r){return r[1]});
   $('a-kv').innerHTML=kv.map(function(r){return '<div><span>'+r[0]+'</span><b>'+esc(r[1])+'</b></div>'}).join('');
   $('a-steps').innerHTML=(a.steps||[]).map(function(st,i){return '<div class="step" data-n="'+(i+1)+'"><h4>'+esc(st.title)+'</h4><p>'+esc(st.text)+'</p></div>'}).join('');
   var shots=a.screenshots||[];$('a-shots').innerHTML=shots.length?shots.map(function(u){return '<img src="'+esc(u)+'" alt="" loading="lazy">'}).join(''):'<div class="empty" style="flex:1">Screenshots will be added with the first release.</div>';
