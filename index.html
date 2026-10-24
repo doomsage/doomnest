@@ -143,6 +143,33 @@ html,body{overflow-x:clip}
 #intro .tx span{display:inline-block;will-change:transform}
 #intro .sk{position:absolute;bottom:24px;color:var(--dim);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
 
+
+.hhead{position:relative;padding:22px 0 6px;overflow:hidden}
+.hw{font-weight:900;letter-spacing:-.01em;font-size:clamp(64px,22vw,200px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,106,43,.5);white-space:nowrap;will-change:transform;user-select:none}
+.ht{font-size:20px;font-weight:600;margin:-6px 0 4px;position:relative;letter-spacing:-.01em}
+.search{display:flex;align-items:center;gap:10px;height:50px;padding:0 16px;margin:14px 0 10px;border-radius:99px;background:var(--surf);border:1px solid var(--line);color:var(--dim);transition:border-color .2s}
+.search:focus-within{border-color:var(--ember)}
+.search input{flex:1;min-width:0;height:100%;background:none;border:0;outline:0;color:var(--ink);font:inherit;font-size:16px}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.cp{flex:none;height:36px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink);font-size:14px;cursor:pointer}
+.cp.on{background:var(--ink);color:#0a0a0a;border-color:var(--ink);font-weight:600}
+.agrid{display:grid;grid-template-columns:1fr;gap:4px;margin-top:6px}
+.atile{display:flex;align-items:center;gap:14px;padding:10px;border-radius:20px;transition:background .2s}
+.atile:hover{background:var(--surf)}
+.atile .main{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.atile .ic{width:64px;height:64px;border-radius:17px;flex:none}
+.atile h3{font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.atile .cat{font-size:13px;color:var(--dim)}
+.atile .r{font-size:12.5px;color:var(--dim)}
+.get{flex:none;height:36px;padding:0 20px;border-radius:99px;display:inline-flex;align-items:center;font-weight:700;font-size:14px;background:var(--g);color:#06210f}
+.get.off{background:var(--surf);color:var(--dim);border:1px solid var(--line)}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:35;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(10,9,14,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+body.in-app .dock{display:block}
+.dock .btn{width:100%;max-width:520px;margin:0 auto;display:flex}
+body.in-app main{padding-bottom:84px}
+@media(min-width:760px){.agrid{grid-template-columns:repeat(2,1fr)}.dock{display:none!important}body.in-app main{padding-bottom:20px}}
+@media(min-width:1100px){.agrid{grid-template-columns:repeat(3,1fr)}}
 </style></head><body>
 <div id="intro"><div class="lg" id="lg"></div><div class="tx" id="tx"></div><div class="sk">Tap to skip</div></div>
 <header class="bar">
@@ -153,23 +180,11 @@ html,body{overflow-x:clip}
 <div class="marq"><div id="marq-track"></div></div>
 <main>
 <section class="view on" id="v-home">
- <div class="sceneA" id="sceneA"><div class="pin">
-  <div class="glow" id="aglow"></div>
-  <div class="w w1" id="w1">DOOM</div><div class="w w2" id="w2">NEST</div>
-  <img class="hl" data-logo id="ahl" alt="Doomsage logo">
-  <div class="hint" id="ahint">Scroll</div>
-  <div class="cw" id="acw"><div class="lbl">Apps</div>
-   <a class="pcard" href="#/doomloader"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h3>Doomloader</h3><div class="r" id="card-rate">&nbsp;</div></div><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
- </div></div>
- <div class="sceneB" id="sceneB"><div class="pin">
-  <div class="glow" id="bglow"></div>
-  <div class="track" id="track">
-   <div class="pn"><img class="hl" data-logo id="bhl" alt="Doomsage logo"><div class="giant" id="g1">DoomNest</div><p>Everything Doomsage builds. Scroll.</p></div>
-   <div class="pn"><div class="lbl">Apps</div><a class="poster" id="poster" href="#/doomloader"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><h3>Doomloader</h3><div class="r" id="card-rate">&nbsp;</div><span class="open">Open</span></a></div>
-   <div class="pn"><div class="big2" id="g2">MORE<br>SOON</div><p>New apps land here.</p></div>
-  </div>
-  <div class="prog"><i id="prog"></i></div>
- </div></div>
+ <div class="hhead"><div class="hw" id="hw">DOOMNEST</div><h1 class="ht">Find an app. Tap Get.</h1></div>
+ <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search apps" autocomplete="off" aria-label="Search apps"></label>
+ <div class="chips" id="chips"></div>
+ <div class="agrid" id="agrid"></div>
+ <div class="empty" id="noapps" hidden>No apps match your search.</div>
 </section>
 <section class="view" id="v-app">
  <div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h1>Doomloader</h1><div class="dev">Doomsage</div></div></div>
@@ -215,6 +230,7 @@ html,body{overflow-x:clip}
  </div></div>
 </section>
 </main>
+<div class="dock" id="dock"><a class="btn main" id="dl2" aria-disabled="true">Not released yet</a></div>
 <footer><div class="wm">DOOMSAGE</div>
 <div class="fine"><span>&copy; 2026 Doomsage. All rights reserved.</span><a href="https://doomsage.in">doomsage.in</a></div></footer>
 <script>
@@ -230,7 +246,7 @@ var RELEASE={apkUrl:"",version:""};
   var n=rows.length,sum=0,c=[0,0,0,0,0,0];rows.forEach(function(r){sum+=r.rating;c[r.rating]++});
   var a=n?sum/n:0,txt=n?a.toFixed(1)+' \u2605':'-';
   $('st-rate').textContent=txt;$('st-cnt').textContent=n?n+(n===1?' review':' reviews'):'No ratings';
-  $('card-rate').textContent=n?a.toFixed(1)+' \u2605':'No ratings yet';
+  window.DNR={doomloader:n?a.toFixed(1)+' \u2605':'No ratings yet'};document.querySelectorAll('[data-rate=doomloader]').forEach(function(e){e.textContent=window.DNR.doomloader});
   $('avg-n').textContent=n?a.toFixed(1):'-';$('avg-c').textContent=n?n+(n===1?' review':' reviews'):'No ratings yet';
   var h='';for(var i=1;i<=5;i++)h+='<i class="'+(i<=Math.round(a)&&n?'on':'')+'">\u2605</i>';$('avg-s').innerHTML=n?'<span class="stars">'+h+'</span>':'';
   for(var k=1;k<=5;k++)$('b'+k).style.width=(n?c[k]/n*100:0)+'%'};
@@ -241,44 +257,16 @@ var RELEASE={apkUrl:"",version:""};
  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(tick)}},{passive:true});
  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1}):null;
  function reveal(){document.querySelectorAll('.rv').forEach(function(e){if(io)io.observe(e);else e.classList.add('in')})}
- function route(){var app=location.hash==='#/doomloader';
-  $('v-home').classList.toggle('on',!app);$('v-app').classList.toggle('on',app);document.body.classList.toggle('in-app',app);scrollTo(0,0);tick();reveal()}
- addEventListener('hashchange',route);route();
- $('back').onclick=function(){location.hash='#/'};
 })();
 </script>
 <script>
 (function(){
- var Q=new URLSearchParams(location.search),VB=Q.get('v')==='b';
- var A=document.getElementById('sceneA'),B=document.getElementById('sceneB');
- (VB?A:B).remove();
- if(VB){var x=document.getElementById('card-rate');}
- var c01=function(v){return v<0?0:v>1?1:v},lerp=function(a,b,t){return a+(b-a)*t};
+var Q=new URLSearchParams(location.search);
+ var c01=function(v){return v<0?0:v>1?1:v};
  var eo=function(t){return 1-Math.pow(1-t,3)},eio=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
  var $=function(i){return document.getElementById(i)};
- /* scene */
- function prog(el){var r=el.getBoundingClientRect(),h=el.offsetHeight-(innerHeight-96);return c01(-r.top/Math.max(1,h)+(96/Math.max(1,h)))}
- function scene(){
-  if(!$('v-home').classList.contains('on'))return;var vw=innerWidth,vh=innerHeight;
-  if(!VB){var p=prog(A);
-   $('w1').style.transform='translate3d('+lerp(.35*vw,-.55*vw,p)+'px,0,0)';
-   $('w2').style.transform='translate3d('+lerp(-.55*vw,.35*vw,p)+'px,0,0)';
-   $('ahl').style.transform='translate3d(0,'+lerp(0,-vh*.1,p)+'px,0) scale('+lerp(1,.55,p)+') rotate('+lerp(0,25,p)+'deg)';
-   $('ahint').style.transform='translate3d('+(-p*vw*1.2)+'px,0,0)';
-   $('aglow').style.transform='translate3d(0,'+(p*-40)+'px,0) scale('+(1+p*.3)+')';
-   $('acw').style.transform='translate3d(0,'+lerp(vh,0,eo(c01((p-.15)/.6)))+'px,0)';
-  }else{var p=prog(B),vw2=vw;
-   $('track').style.transform='translate3d('+(-p*2*vw)+'px,0,0)';
-   $('g1').style.transform='translate3d('+(p*vw*.55)+'px,0,0)';
-   $('bhl').style.transform='translate3d('+(p*vw*.3)+'px,0,0) rotate('+(p*200)+'deg) scale('+(1-p*.3)+')';
-   $('poster').style.transform='translate3d('+((.5-p)*vw*.5)+'px,0,0) rotate('+((.5-p)*6)+'deg)';
-   $('g2').style.transform='translate3d('+((1-p)*vw*.6)+'px,0,0)';
-   $('bglow').style.transform='translate3d('+(-p*vw*.5)+'px,0,0)';
-   $('prog').style.transform='scaleX('+p+')'}
- }
- var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;scene()})}},{passive:true});
- addEventListener('resize',scene);addEventListener('hashchange',function(){setTimeout(scene,30)});scene();
+ var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;var hw=$('hw');if(hw&&!reduce)hw.style.transform='translate3d('+(-scrollY*.35)+'px,0,0)'})}},{passive:true});
  /* intro */
  var I=$('intro'),lg=$('lg'),tx=$('tx'),pcs=[],lts=[],S=Math.min(innerWidth*.58,250);
  for(var i=0;i<9;i++){var d=document.createElement('div');d.className='pc';var r=Math.floor(i/3),cc=i%3;
@@ -301,6 +289,32 @@ var RELEASE={apkUrl:"",version:""};
  function loop(n){if(!run)return;var t=(n-t0)/1000+off;if(render(t))requestAnimationFrame(loop);else run=false}
  I.addEventListener('click',function(){if(off===0){off=3.4-(performance.now()-t0)/1000;if(off<0)off=0}});
  requestAnimationFrame(loop);
+})();
+</script>
+<script>
+var APPS=[{id:"doomloader",name:"Doomloader",cat:"Downloader",apkUrl:RELEASE.apkUrl}];
+(function(){
+ var $=function(i){return document.getElementById(i)};
+ var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+ var ICON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>',cat='All',q='';
+ function render(){
+  var cats=['All'];APPS.forEach(function(a){if(cats.indexOf(a.cat)<0)cats.push(a.cat)});
+  $('chips').innerHTML=cats.length>2?cats.map(function(c){return '<button class="cp'+(c===cat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join(''):'';
+  var list=APPS.filter(function(a){return (cat==='All'||a.cat===cat)&&(!q||(a.name+' '+a.cat).toLowerCase().indexOf(q)>=0)});
+  $('agrid').innerHTML=list.map(function(a){
+   var get=a.apkUrl?'<a class="get" href="'+esc(a.apkUrl)+'" download>Get</a>':'<a class="get off" href="#/'+esc(a.id)+'">Soon</a>';
+   return '<div class="atile"><a class="main" href="#/'+esc(a.id)+'"><div class="ic">'+ICON+'</div><div style="min-width:0"><h3>'+esc(a.name)+'</h3><div class="cat">'+esc(a.cat)+'</div><div class="r" data-rate="'+esc(a.id)+'">'+(window.DNR&&window.DNR[a.id]||'&nbsp;')+'</div></div></a>'+get+'</div>'}).join('');
+  $('noapps').hidden=list.length>0;
+ }
+ window.DN={apps:APPS,render:render};
+ $('q').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();render()});
+ $('chips').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(b){cat=b.dataset.c;render()}});
+ render();
+ function route(){var id=location.hash.replace('#/',''),app=APPS.some(function(a){return a.id===id});
+  $('v-home').classList.toggle('on',!app);$('v-app').classList.toggle('on',app);document.body.classList.toggle('in-app',app);scrollTo(0,0)}
+ addEventListener('hashchange',route);route();
+ $('back').onclick=function(){location.hash='#/'};
+ var d2=$('dl2');if(RELEASE.apkUrl){d2.href=RELEASE.apkUrl;d2.removeAttribute('aria-disabled');d2.textContent='Install'}
 })();
 </script>
 <script type="module">
