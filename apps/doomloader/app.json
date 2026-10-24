@@ -15,7 +15,13 @@
     "repo": "doomsage/doomnest",
     "assetPrefix": "Doomloader"
   },
-  "screenshots": [],
+  "screenshots": [
+    "1-dl-1-share.jpg",
+    "2-dl-2-configure.jpg",
+    "3-dl-3-format.jpg",
+    "4-dl-4-quality.jpg",
+    "5-dl-5-library.jpg"
+  ],
   "steps": [
     {
       "title": "Download the APK",
