@@ -1,0 +1,37 @@
+{
+  "id": "doomloader",
+  "name": "Doomloader",
+  "developer": "Doomsage",
+  "category": "Downloader",
+  "icon": "icon.svg",
+  "about": "Doomloader is a video and audio downloader for Android, built by Doomsage on top of the open source Seal project.",
+  "tags": [
+    "Downloader",
+    "Open source",
+    "No sign-in"
+  ],
+  "platform": "Android",
+  "license": "GPLv3",
+  "package": "com.doomloader.app",
+  "basedOn": "Seal (GPLv3)",
+  "offeredBy": "Doomsage",
+  "release": {
+    "apkUrl": "",
+    "version": ""
+  },
+  "screenshots": [],
+  "steps": [
+    {
+      "title": "Download the APK",
+      "text": "Tap Install on this page once it is available."
+    },
+    {
+      "title": "Allow installs",
+      "text": "Android asks to allow your browser to install apps. Allow it once."
+    },
+    {
+      "title": "Open and install",
+      "text": "Open the downloaded file and tap Install."
+    }
+  ]
+}
