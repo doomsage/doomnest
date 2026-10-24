@@ -373,7 +373,6 @@ var APPS=[];
    function use(rel){by[repo].forEach(function(a){var pre=(a.release&&a.release.assetPrefix||'').toLowerCase(),t=0;rel.forEach(function(x){(x.assets||[]).forEach(function(s){var nm=(s.name||'').toLowerCase();if(/\.apk$/.test(nm)&&(!pre||nm.indexOf(pre)===0))t+=(s.download_count||0)})});DLN[a.id]=t});render();dlStat(cur)}
    if(c&&Date.now()-c.t<6e5){use(c.d);return}
    fetch('https://api.github.com/repos/'+repo+'/releases?per_page=100',{headers:{Accept:'application/vnd.github+json'}}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rel){if(!Array.isArray(rel))throw 0;var slim=rel.map(function(x){return{assets:(x.assets||[]).map(function(s){return{name:s.name,download_count:s.download_count}})}});try{sessionStorage.setItem(ck,JSON.stringify({t:Date.now(),d:slim}))}catch(e){}use(slim)}).catch(function(){})})}
- dlLoad();
  function applyApp(a){
   cur=a;var $=function(i){return document.getElementById(i)};
   $('ttl').textContent=a.name;$('bic').className='ic bic'+(a.iconFull?' full':'');$('bic').innerHTML=iconHtml(a);$('a-name').textContent=a.name;$('a-dev').textContent=a.developer;
@@ -405,6 +404,7 @@ var APPS=[];
   list.filter(Boolean).forEach(function(a){APPS.push(a)});
   window.buildMarquee(APPS.map(function(a){return a.name}));
   render();route();window.fitWm&&window.fitWm();
+  dlLoad();
  }).catch(function(){render();route()});
 })();
 </script>
