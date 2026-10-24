@@ -364,7 +364,7 @@ var APPS=[];
   [['dl',true],['dl2',false]].forEach(function(p){var d=$(p[0]);
    if(url){d.href=url;d.removeAttribute('aria-disabled');d.textContent='Install'}
    else{d.removeAttribute('href');d.setAttribute('aria-disabled','true');d.textContent='Not released yet'}});
-  $('dl-note').textContent=url?'Android only.':'The Android APK has not been published yet. This button turns on when it is.';
+  $('dl-note').textContent=url?((a.release&&a.release.note)||'Android only.'):'The Android APK has not been published yet. This button turns on when it is.';
   if(window.DN_SHOW)window.DN_SHOW()}
  function route(){var id=location.hash.replace('#/',''),a=APPS.filter(function(x){return x.id===id})[0],app=!!a;
   if(a)applyApp(a);
