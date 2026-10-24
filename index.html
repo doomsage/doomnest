@@ -78,14 +78,16 @@ main{max-width:1040px;margin:0 auto;padding:0 16px}
 .rate-in{margin:18px 0 6px;font-size:15px;font-weight:500}
 .pick{display:flex;gap:2px;margin:6px 0 12px}
 .pick button{background:none;border:0;font-size:38px;line-height:1;color:var(--ember);opacity:.3;cursor:pointer;padding:0 4px;transition:transform .15s,opacity .15s}
-.pick button.on{opacity:1}.pick button:active{transform:scale(.88)}
+.pick button.on{opacity:1}.pick button.hov{opacity:.75;transform:scale(1.08)}.pick button:active{transform:scale(.88)}
 .form{display:grid;gap:10px;margin-top:4px}
 .form input,.form textarea{width:100%;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:13px 14px;color:var(--ink);font:inherit;font-size:16px;outline:none}
 .form input:focus,.form textarea:focus{border-color:var(--ember)}
 .form textarea{min-height:84px;resize:vertical}
 .form .btn{justify-self:start}
 .msg{font-size:13px;color:var(--dim);min-height:18px}.msg.err{color:#ff7a6b}.msg.ok{color:var(--g)}
-.list{margin-top:18px;display:grid;gap:18px}
+.list{margin-top:18px;display:grid;gap:14px}
+.item{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:border-color .2s}
+.item:hover{border-color:rgba(255,106,43,.3)}
 .item .who{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500}
 .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,var(--violet),var(--ember));display:grid;place-items:center;font-weight:700;font-size:15px}
 .item .meta{display:flex;align-items:center;gap:10px;margin:8px 0 4px}
@@ -414,6 +416,8 @@ const stars=n=>'<span class="stars" aria-label="'+n+' out of 5">'+[1,2,3,4,5].ma
 let rating=0;
 const pick=$('pick');
 for(let i=1;i<=5;i++){const b=document.createElement('button');b.type='button';b.textContent='\u2605';b.setAttribute('role','radio');b.setAttribute('aria-label',i+' star'+(i>1?'s':''));
+ b.onmouseenter=()=>{[...pick.children].forEach((x,k)=>x.classList.toggle('hov',k<i))};
+ b.onmouseleave=()=>{[...pick.children].forEach(x=>x.classList.remove('hov'))};
  b.onclick=()=>{rating=i;[...pick.children].forEach((x,k)=>x.classList.toggle('on',k<i))};pick.appendChild(b)}
 function fmt(ts){try{return ts.toDate().toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}catch(e){return''}}
 async function load(){
