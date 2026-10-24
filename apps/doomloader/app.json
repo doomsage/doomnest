@@ -11,7 +11,9 @@
   "offeredBy": "Doomsage",
   "release": {
     "apkUrl": "https://github.com/doomsage/doomnest/releases/download/v2.0.0-alpha.5/Doomloader-2.0.0-alpha.5-generic-arm64-v8a-release.apk",
-    "version": "2.0.0-alpha.5"
+    "version": "2.0.0-alpha.5",
+    "repo": "doomsage/doomnest",
+    "assetPrefix": "Doomloader"
   },
   "screenshots": [],
   "steps": [
