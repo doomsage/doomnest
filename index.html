@@ -89,7 +89,7 @@ main{max-width:1040px;margin:0 auto;padding:0 16px}
 .item time{color:var(--dim);font-size:12px}
 .item p{color:#d4d0be;font-size:14.5px;overflow-wrap:anywhere;white-space:pre-wrap}
 footer{margin-top:48px;padding:50px 16px 26px;border-top:1px solid var(--line);overflow:hidden}
-.wm{font-size:clamp(54px,21vw,230px);font-weight:900;letter-spacing:-.05em;line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(241,238,224,.25);user-select:none}
+.wm{font-size:clamp(40px,16.5vw,230px);font-weight:900;letter-spacing:-.05em;line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(241,238,224,.25);user-select:none}
 .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:24px auto 0;color:var(--dim);font-size:12.5px;max-width:1040px}
 .fine a{text-decoration:underline;text-underline-offset:3px}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
@@ -211,9 +211,9 @@ async function load(){
  try{
   const snap=await getDocs(query(collection(db,'reviews'),orderBy('createdAt','desc'),limit(50)));
   const rows=snap.docs.map(d=>d.data()).filter(r=>r.app==='doomloader');
-  if(!rows.length){window.setStats([]);list.innerHTML='<div class="empty">No reviews yet. Be the first.</div>';$('avg').hidden=true;return}
+  if(!rows.length){window.setStats([]);list.innerHTML='<div class="empty">No reviews yet. Be the first.</div>';return}
   window.setStats(rows);const avg=rows.reduce((a,r)=>a+r.rating,0)/rows.length;
-  $('avg').hidden=false;$('avg-n').textContent=avg.toFixed(1);$('avg-c').textContent=rows.length+(rows.length===1?' review':' reviews');
+  
   list.innerHTML=rows.map(r=>'<div class="item"><div class="who"><span class="av">'+esc(r.name.trim().charAt(0).toUpperCase()||'?')+'</span><b>'+esc(r.name)+'</b></div><div class="meta">'+stars(r.rating)+'<time>'+fmt(r.createdAt)+'</time></div>'+(r.text?'<p>'+esc(r.text)+'</p>':'')+'</div>').join('');
  }catch(e){list.innerHTML='<div class="empty">Reviews could not load right now.</div>'}
 }
