@@ -109,7 +109,7 @@ html,body{overflow-x:clip}
 .pin{position:sticky;top:96px;height:calc(100svh - 96px);overflow:hidden}
 .sceneA{height:300vh;margin:0 -16px}.sceneB{height:420vh;width:100vw;margin-left:calc(50% - 50vw)}
 .glow{position:absolute;inset:0;background:radial-gradient(55% 40% at 50% 38%,rgba(127,90,240,.32),transparent 70%),radial-gradient(40% 30% at 15% 85%,rgba(255,106,43,.2),transparent 70%);will-change:transform}
-.w{position:absolute;left:0;font-weight:900;letter-spacing:-.05em;line-height:.8;font-size:clamp(90px,34vw,420px);color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);white-space:nowrap;will-change:transform;user-select:none}
+.w{position:absolute;left:0;font-weight:900;letter-spacing:-.01em;line-height:.8;font-size:clamp(90px,34vw,420px);color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);white-space:nowrap;will-change:transform;user-select:none}
 .w1{top:6%}.w2{top:42%;-webkit-text-stroke-color:rgba(255,106,43,.55)}
 .hl{position:absolute;left:50%;top:30%;width:clamp(130px,38vw,240px);height:auto;border-radius:50%;margin:calc(clamp(130px,38vw,240px)/-2) 0 0 calc(clamp(130px,38vw,240px)/-2);box-shadow:0 0 0 1px var(--line),0 0 90px rgba(127,90,240,.6);will-change:transform;z-index:2}
 .hint{position:absolute;left:0;right:0;top:62%;text-align:center;color:var(--dim);font-size:11px;letter-spacing:.35em;text-transform:uppercase;z-index:2;will-change:transform}
@@ -119,20 +119,20 @@ html,body{overflow-x:clip}
 .pcard:active{transform:scale(.98)}.pcard:hover{border-color:rgba(255,106,43,.7)}
 .pcard .ic{width:74px;height:74px;border-radius:20px;flex:none}
 .pcard h3{font-size:22px;font-weight:700;letter-spacing:-.01em}
-.pcard .r{font-size:13px;color:var(--dim)}
+.pcard .r{min-height:19px;font-size:13px;color:var(--dim)}
 .pcard .go{margin-left:auto;width:42px;height:42px;border-radius:50%;background:var(--ink);color:#0a0a0a;display:grid;place-items:center;flex:none}
 .track{display:flex;width:300vw;height:100%;will-change:transform;position:relative}
 .pn{width:100vw;height:100%;position:relative;flex:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 20px;text-align:center}
-.giant{font-size:clamp(64px,24vw,300px);font-weight:900;letter-spacing:-.05em;line-height:.9;background:linear-gradient(100deg,var(--ink) 30%,var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;will-change:transform;margin-top:28px}
+.giant{font-size:clamp(56px,17vw,300px);font-weight:900;letter-spacing:-.03em;line-height:.9;background:linear-gradient(100deg,var(--ink) 30%,var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;will-change:transform;margin-top:28px}
 .pn p{color:var(--dim);margin-top:10px}
 .pn .hl{position:relative;left:0;top:0;margin:0;will-change:transform}
 .poster{display:block;width:min(86vw,380px);padding:26px;border-radius:34px;border:1px solid rgba(241,238,224,.2);background:linear-gradient(160deg,rgba(127,90,240,.4),rgba(255,106,43,.2) 70%);box-shadow:0 40px 100px rgba(0,0,0,.55);text-align:left;transition:transform .2s;will-change:transform}
 .poster:active{transform:scale(.98)}
 .poster .ic{width:112px;height:112px;border-radius:30px;margin-bottom:22px}
 .poster h3{font-size:34px;letter-spacing:-.02em;line-height:1.05}
-.poster .r{color:var(--dim);margin:6px 0 20px}
+.poster .r{color:var(--dim);margin:6px 0 20px;min-height:19px}
 .poster .open{display:inline-flex;height:44px;align-items:center;padding:0 24px;border-radius:99px;background:var(--ink);color:#0a0a0a;font-weight:700}
-.big2{font-size:clamp(60px,22vw,260px);font-weight:900;letter-spacing:-.05em;line-height:.88;color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);will-change:transform}
+.big2{font-size:clamp(60px,22vw,260px);font-weight:900;letter-spacing:-.02em;line-height:.88;color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);will-change:transform}
 .prog{position:absolute;left:20px;right:20px;bottom:14px;height:3px;background:var(--surf);border-radius:9px;overflow:hidden;z-index:4}
 .prog i{display:block;height:100%;width:100%;background:var(--ember);transform-origin:0 50%;transform:scaleX(0)}
 .ph{position:relative}
