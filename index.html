@@ -37,6 +37,7 @@ main{max-width:1040px;margin:0 auto;padding:0 16px}
 .ph .ic{width:72px;height:72px;border-radius:18px;flex:none}
 .ph h1{font-size:24px;font-weight:600;line-height:1.15;letter-spacing:-.01em}
 .dev{color:var(--ember);font-size:14px;font-weight:600;margin-top:3px}
+.tagline{color:var(--dim);font-size:14px;margin-top:4px}
 .stats{display:flex;margin:22px 0 4px;text-align:center}
 .stats>div{flex:1;min-width:0;padding:2px 6px;border-left:1px solid var(--line)}
 .stats>div:first-child{border-left:0}
@@ -59,6 +60,8 @@ main{max-width:1040px;margin:0 auto;padding:0 16px}
 .kv div{display:flex;justify-content:space-between;gap:16px;padding:13px 16px;border-top:1px solid var(--line);font-size:14px}
 .kv div:first-child{border-top:0}
 .kv span{color:var(--dim)}.kv b{font-weight:500;text-align:right;overflow-wrap:anywhere}
+.kv .kv-pkg{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.pkg-id{font-family:ui-monospace,monospace;font-size:13.5px;color:var(--ink);word-break:break-all;overflow-wrap:anywhere;text-align:left!important}
 .steps{display:grid;gap:10px}
 .step{border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 58px;background:var(--surf);position:relative}
 .step::before{content:attr(data-n);position:absolute;left:18px;top:12px;font-size:24px;font-weight:800;color:var(--ember)}
@@ -95,6 +98,7 @@ footer{margin-top:48px;padding:50px 16px 26px;border-top:1px solid var(--line);o
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
 .rv{opacity:0;transform:translate3d(60px,0,0);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
+.cols{display:grid;grid-template-columns:1fr;gap:20px 0}
 @media(min-width:820px){
  main{padding:0 32px}.row{margin:0;padding:0}.tile{width:132px}.tile .ic{width:120px;height:120px;border-radius:28px}
  .ph{gap:24px;padding-top:36px}.ph .ic{width:128px;height:128px;border-radius:30px}.ph h1{font-size:36px}.dev{font-size:16px}
@@ -207,7 +211,7 @@ body.in-app main{padding-bottom:84px}
  </div>
 </section>
 <section class="view" id="v-app">
- <div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h1>Doomloader</h1><div class="dev">Doomsage</div></div></div>
+ <div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h1>Doomloader</h1><div class="dev">Doomsage</div><div class="tagline">Video and audio downloader for Android</div></div></div>
  <div class="stats">
   <div><b id="st-rate">-</b><small id="st-cnt">Ratings</small></div>
   <div><b>Android</b><small>Platform</small></div>
@@ -217,11 +221,11 @@ body.in-app main{padding-bottom:84px}
  <div class="install"><a class="btn main" id="dl" aria-disabled="true" download>Not released yet</a></div>
  <p class="note" id="dl-note">The Android APK has not been published yet. This button turns on when it is.</p>
  <div class="shead"><h2>Screenshots</h2></div>
- <div class="shots"><div class="empty" style="flex:1">Screenshots will be added with the first release.</div></div>
+ <div class="shots"><div class="empty" style="flex:1">Screenshots arrive with the first release.</div></div>
  <div class="cols"><div>
  <div class="shead"><h2>About this app</h2></div>
- <p class="about">Doomloader is a video and audio downloader for Android, built by Doomsage on top of the open source Seal project.</p>
- <div class="chips"><span class="chip">Downloader</span><span class="chip">Open source</span><span class="chip">No sign-in</span></div>
+ <p class="about">Doomloader is a video and audio downloader for Android, built by Doomsage on top of the open source Seal project (GPLv3). Fast, ad-free downloads with no sign-in required.</p>
+ <div class="chips"><span class="chip">Downloader</span><span class="chip">Open source</span><span class="chip">No sign-in</span><span class="chip">GPLv3</span></div>
  <div class="shead"><h2>Ratings and reviews</h2></div>
  <div class="sum"><div class="big"><div class="n" id="avg-n">-</div><div id="avg-s"></div><small id="avg-c">No ratings yet</small></div><div class="bars"><div>5<i><u id="b5" style="width:0"></u></i></div><div>4<i><u id="b4" style="width:0"></u></i></div><div>3<i><u id="b3" style="width:0"></u></i></div><div>2<i><u id="b2" style="width:0"></u></i></div><div>1<i><u id="b1" style="width:0"></u></i></div></div></div>
  <div class="rate-in">Rate this app</div>
@@ -234,7 +238,7 @@ body.in-app main{padding-bottom:84px}
  <div class="list" id="rlist"><div class="empty">Loading reviews</div></div>
  </div><div>
  <div class="shead"><h2>App info</h2></div>
- <div class="kv"><div><span>Package</span><b>com.doomloader.app</b></div><div><span>Platform</span><b>Android</b></div><div><span>Version</span><b id="ver2">Pending</b></div><div><span>Based on</span><b>Seal (GPLv3)</b></div><div><span>Offered by</span><b>Doomsage</b></div></div>
+ <div class="kv"><div class="kv-pkg"><span>Package</span><b class="pkg-id">com.doomloader.app</b></div><div><span>Platform</span><b>Android</b></div><div><span>Version</span><b id="ver2">Pending</b></div><div><span>Based on</span><b>Seal (GPLv3)</b></div><div><span>Offered by</span><b>Doomsage</b></div></div>
  <div class="shead"><h2>How to install</h2></div>
  <div class="steps">
   <div class="step" data-n="1"><h4>Download the APK</h4><p>Tap Install on this page once it is available.</p></div>
