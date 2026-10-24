@@ -103,7 +103,48 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
  .shots,.row{margin:0;padding:0}
 }
 @media(prefers-reduced-motion:reduce){.view.on{animation:none}.rv{opacity:1;transform:none;transition:none}}
+
+html,body{overflow-x:clip}
+.marq{position:sticky;top:60px;z-index:29;height:36px;background:var(--bg);padding:0;display:flex;align-items:center}
+.pin{position:sticky;top:96px;height:calc(100svh - 96px);overflow:hidden}
+.sceneA{height:300vh;margin:0 -16px}.sceneB{height:420vh;width:100vw;margin-left:calc(50% - 50vw)}
+.glow{position:absolute;inset:0;background:radial-gradient(55% 40% at 50% 38%,rgba(127,90,240,.32),transparent 70%),radial-gradient(40% 30% at 15% 85%,rgba(255,106,43,.2),transparent 70%);will-change:transform}
+.w{position:absolute;left:0;font-weight:900;letter-spacing:-.05em;line-height:.8;font-size:clamp(90px,34vw,420px);color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);white-space:nowrap;will-change:transform;user-select:none}
+.w1{top:6%}.w2{top:42%;-webkit-text-stroke-color:rgba(255,106,43,.55)}
+.hl{position:absolute;left:50%;top:30%;width:clamp(130px,38vw,240px);height:auto;border-radius:50%;margin:calc(clamp(130px,38vw,240px)/-2) 0 0 calc(clamp(130px,38vw,240px)/-2);box-shadow:0 0 0 1px var(--line),0 0 90px rgba(127,90,240,.6);will-change:transform;z-index:2}
+.hint{position:absolute;left:0;right:0;top:62%;text-align:center;color:var(--dim);font-size:11px;letter-spacing:.35em;text-transform:uppercase;z-index:2;will-change:transform}
+.cw{position:absolute;left:16px;right:16px;bottom:18px;z-index:3;will-change:transform;max-width:560px;margin:0 auto}
+.lbl{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);margin-bottom:10px;font-weight:700}
+.pcard{display:flex;align-items:center;gap:16px;padding:16px;border-radius:26px;border:1px solid rgba(241,238,224,.2);background:linear-gradient(135deg,rgba(127,90,240,.28),rgba(255,106,43,.14));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 80px rgba(0,0,0,.5);transition:transform .2s}
+.pcard:active{transform:scale(.98)}.pcard:hover{border-color:rgba(255,106,43,.7)}
+.pcard .ic{width:74px;height:74px;border-radius:20px;flex:none}
+.pcard h3{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.pcard .r{font-size:13px;color:var(--dim)}
+.pcard .go{margin-left:auto;width:42px;height:42px;border-radius:50%;background:var(--ink);color:#0a0a0a;display:grid;place-items:center;flex:none}
+.track{display:flex;width:300vw;height:100%;will-change:transform;position:relative}
+.pn{width:100vw;height:100%;position:relative;flex:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 20px;text-align:center}
+.giant{font-size:clamp(64px,24vw,300px);font-weight:900;letter-spacing:-.05em;line-height:.9;background:linear-gradient(100deg,var(--ink) 30%,var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;will-change:transform;margin-top:28px}
+.pn p{color:var(--dim);margin-top:10px}
+.pn .hl{position:relative;left:0;top:0;margin:0;will-change:transform}
+.poster{display:block;width:min(86vw,380px);padding:26px;border-radius:34px;border:1px solid rgba(241,238,224,.2);background:linear-gradient(160deg,rgba(127,90,240,.4),rgba(255,106,43,.2) 70%);box-shadow:0 40px 100px rgba(0,0,0,.55);text-align:left;transition:transform .2s;will-change:transform}
+.poster:active{transform:scale(.98)}
+.poster .ic{width:112px;height:112px;border-radius:30px;margin-bottom:22px}
+.poster h3{font-size:34px;letter-spacing:-.02em;line-height:1.05}
+.poster .r{color:var(--dim);margin:6px 0 20px}
+.poster .open{display:inline-flex;height:44px;align-items:center;padding:0 24px;border-radius:99px;background:var(--ink);color:#0a0a0a;font-weight:700}
+.big2{font-size:clamp(60px,22vw,260px);font-weight:900;letter-spacing:-.05em;line-height:.88;color:transparent;-webkit-text-stroke:1.5px rgba(241,238,224,.4);will-change:transform}
+.prog{position:absolute;left:20px;right:20px;bottom:14px;height:3px;background:var(--surf);border-radius:9px;overflow:hidden;z-index:4}
+.prog i{display:block;height:100%;width:100%;background:var(--ember);transform-origin:0 50%;transform:scaleX(0)}
+.ph{position:relative}
+#intro{position:fixed;inset:0;z-index:100;background:#07060a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;overflow:hidden;will-change:transform;touch-action:manipulation}
+#intro .lg{--S:min(58vw,250px);width:var(--S);height:var(--S);position:relative;border-radius:50%}
+#intro .pc{position:absolute;width:calc(var(--S)/3 + 1px);height:calc(var(--S)/3 + 1px);background-size:var(--S) var(--S);will-change:transform}
+#intro .tx{display:flex;font-weight:900;font-size:clamp(38px,12vw,72px);letter-spacing:-.03em;overflow:hidden;padding:0 4px 6px}
+#intro .tx span{display:inline-block;will-change:transform}
+#intro .sk{position:absolute;bottom:24px;color:var(--dim);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+@media(min-width:820px){.cw{left:50%;transform-origin:50% 100%}}
 </style></head><body>
+<div id="intro"><div class="lg" id="lg"></div><div class="tx" id="tx"></div><div class="sk">Tap to skip</div></div>
 <header class="bar">
  <button class="back" id="back" aria-label="Back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></button>
  <a class="logo" href="#/"><img data-logo alt="Doomsage logo"><span class="nm">DOOMSAGE<small>DoomNest</small></span></a>
@@ -112,10 +153,23 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="marq"><div id="marq-track"></div></div>
 <main>
 <section class="view on" id="v-home">
- <div class="shead"><h2>Apps by Doomsage</h2></div>
- <div class="row rv">
-  <a class="tile" href="#/doomloader"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><h3>Doomloader</h3><div class="r" id="card-rate">&nbsp;</div></a>
- </div>
+ <div class="sceneA" id="sceneA"><div class="pin">
+  <div class="glow" id="aglow"></div>
+  <div class="w w1" id="w1">DOOM</div><div class="w w2" id="w2">NEST</div>
+  <img class="hl" data-logo id="ahl" alt="Doomsage logo">
+  <div class="hint" id="ahint">Scroll</div>
+  <div class="cw" id="acw"><div class="lbl">Apps</div>
+   <a class="pcard" href="#/doomloader"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h3>Doomloader</h3><div class="r" id="card-rate">&nbsp;</div></div><span class="go"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+ </div></div>
+ <div class="sceneB" id="sceneB"><div class="pin">
+  <div class="glow" id="bglow"></div>
+  <div class="track" id="track">
+   <div class="pn"><img class="hl" data-logo id="bhl" alt="Doomsage logo"><div class="giant" id="g1">DoomNest</div><p>Everything Doomsage builds. Scroll.</p></div>
+   <div class="pn"><div class="lbl">Apps</div><a class="poster" id="poster" href="#/doomloader"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><h3>Doomloader</h3><div class="r" id="card-rate">&nbsp;</div><span class="open">Open</span></a></div>
+   <div class="pn"><div class="big2" id="g2">MORE<br>SOON</div><p>New apps land here.</p></div>
+  </div>
+  <div class="prog"><i id="prog"></i></div>
+ </div></div>
 </section>
 <section class="view" id="v-app">
  <div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div><div><h1>Doomloader</h1><div class="dev">Doomsage</div></div></div>
@@ -191,6 +245,62 @@ var RELEASE={apkUrl:"",version:""};
   $('v-home').classList.toggle('on',!app);$('v-app').classList.toggle('on',app);document.body.classList.toggle('in-app',app);scrollTo(0,0);tick();reveal()}
  addEventListener('hashchange',route);route();
  $('back').onclick=function(){location.hash='#/'};
+})();
+</script>
+<script>
+(function(){
+ var Q=new URLSearchParams(location.search),VB=Q.get('v')==='b';
+ var A=document.getElementById('sceneA'),B=document.getElementById('sceneB');
+ (VB?A:B).remove();
+ if(VB){var x=document.getElementById('card-rate');}
+ var c01=function(v){return v<0?0:v>1?1:v},lerp=function(a,b,t){return a+(b-a)*t};
+ var eo=function(t){return 1-Math.pow(1-t,3)},eio=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+ var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ var $=function(i){return document.getElementById(i)};
+ /* scene */
+ function prog(el){var r=el.getBoundingClientRect(),h=el.offsetHeight-(innerHeight-96);return c01(-r.top/Math.max(1,h)+(96/Math.max(1,h)))}
+ function scene(){
+  if(!$('v-home').classList.contains('on'))return;var vw=innerWidth,vh=innerHeight;
+  if(!VB){var p=prog(A);
+   $('w1').style.transform='translate3d('+lerp(.35*vw,-.55*vw,p)+'px,0,0)';
+   $('w2').style.transform='translate3d('+lerp(-.55*vw,.35*vw,p)+'px,0,0)';
+   $('ahl').style.transform='translate3d(0,'+lerp(0,-vh*.1,p)+'px,0) scale('+lerp(1,.55,p)+') rotate('+lerp(0,25,p)+'deg)';
+   $('ahint').style.transform='translate3d('+(-p*vw*1.2)+'px,0,0)';
+   $('aglow').style.transform='translate3d(0,'+(p*-40)+'px,0) scale('+(1+p*.3)+')';
+   $('acw').style.transform=(vw>=820?'translateX(-50%) ':'')+'translate3d(0,'+lerp(vh,0,eo(c01((p-.15)/.6)))+'px,0)';
+  }else{var p=prog(B),vw2=vw;
+   $('track').style.transform='translate3d('+(-p*2*vw)+'px,0,0)';
+   $('g1').style.transform='translate3d('+(p*vw*.55)+'px,0,0)';
+   $('bhl').style.transform='translate3d('+(p*vw*.3)+'px,0,0) rotate('+(p*200)+'deg) scale('+(1-p*.3)+')';
+   $('poster').style.transform='translate3d('+((.5-p)*vw*.5)+'px,0,0) rotate('+((.5-p)*6)+'deg)';
+   $('g2').style.transform='translate3d('+((1-p)*vw*.6)+'px,0,0)';
+   $('bglow').style.transform='translate3d('+(-p*vw*.5)+'px,0,0)';
+   $('prog').style.transform='scaleX('+p+')'}
+ }
+ var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;scene()})}},{passive:true});
+ addEventListener('resize',scene);addEventListener('hashchange',function(){setTimeout(scene,30)});scene();
+ /* intro */
+ var I=$('intro'),lg=$('lg'),tx=$('tx'),pcs=[],lts=[],S=Math.min(innerWidth*.58,250);
+ for(var i=0;i<9;i++){var d=document.createElement('div');d.className='pc';var r=Math.floor(i/3),cc=i%3;
+  d.style.left='calc(var(--S)/3*'+cc+')';d.style.top='calc(var(--S)/3*'+r+')';d.style.backgroundImage='url('+LOGO+')';d.style.backgroundPosition='calc(var(--S)/-3*'+cc+') calc(var(--S)/-3*'+r+')';
+  var a=(i*137.5)*Math.PI/180,D=Math.max(innerWidth,innerHeight)*.9;
+  d._o=[Math.cos(a)*D,Math.sin(a)*D,(i%2?1:-1)*(160+i*25)];lg.appendChild(d);pcs.push(d)}
+ 'DoomNest'.split('').forEach(function(ch){var sp=document.createElement('span');sp.textContent=ch;tx.appendChild(sp);lts.push(sp)});
+ function render(t){
+  pcs.forEach(function(d,i){var e=eo(c01((t-i*.08)/1.0)),o=d._o;
+   d.style.transform='translate3d('+o[0]*(1-e)+'px,'+o[1]*(1-e)+'px,0) rotate('+o[2]*(1-e)+'deg) scale('+(.5+.5*e)+')'});
+  var pop=t>1.7&&t<2.3?Math.sin((t-1.7)/.6*Math.PI)*.05:0;
+  lg.style.transform='scale('+(1+pop)+')';lg.style.boxShadow=t>1.7?'0 0 '+(80*c01((t-1.7)/.5))+'px rgba(127,90,240,.7)':'none';
+  lts.forEach(function(sp,i){var e=eo(c01((t-2.0-i*.06)/.5));sp.style.transform='translate3d(0,'+(110*(1-e))+'%,0)'});
+  var x=eio(c01((t-3.4)/.8));I.style.transform='translate3d(0,'+(-x*100)+'%,0)';
+  if(t>=4.2){I.style.display='none';return false}return true}
+ var qf=Q.get('frame');
+ if(qf!==null){render(parseFloat(qf));return}
+ if(reduce){I.style.display='none';return}
+ var t0=performance.now(),off=0,run=true;
+ function loop(n){if(!run)return;var t=(n-t0)/1000+off;if(render(t))requestAnimationFrame(loop);else run=false}
+ I.addEventListener('click',function(){if(off===0){off=3.4-(performance.now()-t0)/1000;if(off<0)off=0}});
+ requestAnimationFrame(loop);
 })();
 </script>
 <script type="module">
