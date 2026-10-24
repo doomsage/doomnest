@@ -4,19 +4,14 @@
   "developer": "Doomsage",
   "category": "Downloader",
   "icon": "1-dl-icon.png",
-  "about": "Doomloader is a video and audio downloader for Android, built by Doomsage.",
-  "tags": [
-    "Downloader",
-    "Open source",
-    "No sign-in"
-  ],
+  "about": "YouTube video downloader.",
+  "tags": [],
   "platform": "Android",
   "package": "com.doomloader.app",
   "offeredBy": "Doomsage",
   "release": {
     "apkUrl": "https://github.com/doomsage/doomnest/releases/download/v2.0.0-alpha.5/Doomloader-2.0.0-alpha.5-generic-arm64-v8a-release.apk",
-    "version": "2.0.0-alpha.5",
-    "note": "Alpha release for Android (arm64). It may have bugs."
+    "version": "2.0.0-alpha.5"
   },
   "screenshots": [],
   "steps": [
