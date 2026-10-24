@@ -13,9 +13,10 @@ a{color:inherit;text-decoration:none}button{font-family:inherit}
 .bar .nm small{margin-left:8px;font-weight:500;font-size:11px;letter-spacing:.1em;color:var(--dim)}
 .back{display:none;width:40px;height:40px;margin-left:-8px;border-radius:50%;background:none;border:0;color:var(--ink);align-items:center;justify-content:center;cursor:pointer}
 .back:hover{background:var(--surf)}
-body.in-app .back{display:flex}body.in-app .bar .logo{display:none}
-.bar .ttl{display:none;font-weight:600;font-size:17px;opacity:0;transition:opacity .2s}
-body.in-app .bar .ttl{display:block}body.scrolled .bar .ttl{opacity:1}
+body.in-app .back{display:flex}body.in-app .bar .logo{margin-left:auto}body.in-app .bar .nm{display:none}body.in-app .bar img{width:30px;height:30px}
+.bar .bic{display:none;width:32px;height:32px;border-radius:9px;flex:none;margin-left:-2px;box-shadow:none}body.in-app .bar .bic{display:grid}
+.bar .ttl{display:none;font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+body.in-app .bar .ttl{display:block}
 .marq{overflow:hidden;padding:10px 0;border-bottom:1px solid var(--line)}
 .marq div{display:flex;gap:36px;white-space:nowrap;width:max-content;will-change:transform;font-weight:700;letter-spacing:.2em;font-size:11px;color:var(--dim);text-transform:uppercase}
 .marq b{color:var(--ember)}
@@ -175,8 +176,8 @@ body.in-app main{padding-bottom:84px}
 <div id="intro"><div class="lg" id="lg"></div><div class="tx" id="tx"></div><div class="sk">Tap to skip</div></div>
 <header class="bar">
  <button class="back" id="back" aria-label="Back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></button>
+ <span class="ic bic" id="bic"></span><span class="ttl" id="ttl"></span>
  <a class="logo" href="#/"><img data-logo id="bar-logo" alt="Doomsage logo"><span class="nm">DOOMSAGE<small>DoomNest</small></span></a>
- <span class="ttl" id="ttl"></span>
 </header>
 <div class="marq"><div id="marq-track"></div></div>
 <main>
@@ -360,7 +361,7 @@ var APPS=[];
  render();
  function applyApp(a){
   cur=a;var $=function(i){return document.getElementById(i)};
-  $('ttl').textContent=a.name;$('a-name').textContent=a.name;$('a-dev').textContent=a.developer;
+  $('ttl').textContent=a.name;$('bic').className='ic bic'+(a.iconFull?' full':'');$('bic').innerHTML=iconHtml(a);$('a-name').textContent=a.name;$('a-dev').textContent=a.developer;
   $('a-ic').className='ic'+(a.iconFull?' full':'');$('a-ic').innerHTML=iconHtml(a);
   $('a-plat').textContent=a.platform;
   var ver=a.release&&a.release.version||'Pending';$('ver').textContent=ver;
