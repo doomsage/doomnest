@@ -17,6 +17,8 @@ body.in-app .back{display:flex}body.in-app .bar .logo{margin-left:auto}body.in-a
 .bar .bic{display:none;width:32px;height:32px;border-radius:9px;flex:none;margin-left:-2px;box-shadow:none}body.in-app .bar .bic{display:grid}
 .bar .ttl{display:none;font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 body.in-app .bar .ttl{display:block}
+[hidden]{display:none!important}
+body.in-app .marq{display:none}
 .marq{overflow:hidden;padding:10px 0;border-bottom:1px solid var(--line)}
 .marq div{display:flex;gap:36px;white-space:nowrap;width:max-content;will-change:transform;font-weight:700;letter-spacing:.2em;font-size:11px;color:var(--dim);text-transform:uppercase}
 .marq b{color:var(--ember)}
@@ -351,7 +353,7 @@ var APPS=[];
   var list=APPS.filter(function(a){return (cat==='All'||a.cat===cat)&&(!q||(a.name+' '+a.cat).toLowerCase().indexOf(q)>=0)});
   $('agrid').innerHTML=list.map(function(a){
    var get=a.apkUrl?'<a class="get" href="'+esc(a.apkUrl)+'" download>Get</a>':'<a class="get off" href="#/'+esc(a.id)+'">Soon</a>';
-   return '<div class="atile"><a class="main" href="#/'+esc(a.id)+'"><div class="ic'+(a.iconFull?' full':'')+'">'+iconHtml(a)+'</div><div style="min-width:0"><h3>'+esc(a.name)+'</h3><div class="cat">'+esc(a.cat)+'</div><div class="r" data-rate="'+esc(a.id)+'">'+(window.DNR&&window.DNR[a.id]||'&nbsp;')+'</div></div></a>'+get+'</div>'}).join('');
+   return '<div class="atile"><a class="main" href="#/'+esc(a.id)+'"><div class="ic'+(a.iconFull?' full':'')+'">'+iconHtml(a)+'</div><div style="min-width:0"><h3>'+esc(a.name)+'</h3><div class="r" data-rate="'+esc(a.id)+'">'+(window.DNR&&window.DNR[a.id]||'&nbsp;')+'</div></div></a>'+get+'</div>'}).join('');
   $('noapps').hidden=list.length>0;
  }
  window.DN={apps:APPS,render:render};
@@ -365,7 +367,7 @@ var APPS=[];
   $('a-ic').className='ic'+(a.iconFull?' full':'');$('a-ic').innerHTML=iconHtml(a);
   $('a-plat').textContent=a.platform;
   var ver=a.release&&a.release.version||'Pending';$('ver').textContent=ver;
-  $('a-about').textContent=a.about;$('a-tags').innerHTML=(a.tags||[]).map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('');
+  $('a-about').textContent=a.about;$('a-tags').innerHTML=(a.tags||[]).map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('');$('a-tags').hidden=!(a.tags&&a.tags.length);
   var kv=[['Package',a.package],['Platform',a.platform],['Version',ver],['Offered by',a.offeredBy]].filter(function(r){return r[1]});
   $('a-kv').innerHTML=kv.map(function(r){return '<div><span>'+r[0]+'</span><b>'+esc(r[1])+'</b></div>'}).join('');
   $('a-steps').innerHTML=(a.steps||[]).map(function(st,i){return '<div class="step" data-n="'+(i+1)+'"><h4>'+esc(st.title)+'</h4><p>'+esc(st.text)+'</p></div>'}).join('');
@@ -374,7 +376,7 @@ var APPS=[];
   [['dl',true],['dl2',false]].forEach(function(p){var d=$(p[0]);
    if(url){d.href=url;d.removeAttribute('aria-disabled');d.textContent='Install'}
    else{d.removeAttribute('href');d.setAttribute('aria-disabled','true');d.textContent='Not released yet'}});
-  $('dl-note').textContent=url?((a.release&&a.release.note)||'Android only.'):'The Android APK has not been published yet. This button turns on when it is.';
+  var nt=url?((a.release&&a.release.note)||''):'The Android APK has not been published yet. This button turns on when it is.';$('dl-note').textContent=nt;$('dl-note').hidden=!nt;
   if(window.DN_SHOW)window.DN_SHOW()}
  function route(){var id=location.hash.replace('#/',''),a=APPS.filter(function(x){return x.id===id})[0],app=!!a;
   if(a)applyApp(a);
