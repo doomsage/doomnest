@@ -90,7 +90,7 @@ main{max-width:1040px;margin:0 auto;padding:0 16px}
 .item time{color:var(--dim);font-size:12px}
 .item p{color:#d4d0be;font-size:14.5px;overflow-wrap:anywhere;white-space:pre-wrap}
 footer{margin-top:48px;padding:50px 16px 26px;border-top:1px solid var(--line);overflow:hidden}
-.wm{font-size:clamp(40px,16.5vw,230px);font-weight:900;letter-spacing:-.05em;line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(241,238,224,.25);user-select:none}
+.wm{white-space:nowrap;font-size:clamp(40px,13vw,230px);font-weight:900;letter-spacing:-.05em;line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(241,238,224,.25);user-select:none}
 .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:24px auto 0;color:var(--dim);font-size:12.5px;max-width:1040px}
 .fine a{text-decoration:underline;text-underline-offset:3px}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
@@ -146,8 +146,8 @@ html,body{overflow-x:clip}
 
 
 .hhead{position:relative;padding:22px 0 6px;overflow:hidden}
-.hw{font-weight:900;letter-spacing:-.01em;font-size:clamp(64px,22vw,200px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,106,43,.5);white-space:nowrap;will-change:transform;user-select:none}
-.ht{font-size:20px;font-weight:600;margin:-6px 0 4px;position:relative;letter-spacing:-.01em}
+.hw{font-weight:900;letter-spacing:-.01em;font-size:clamp(40px,15vw,200px);line-height:.9;padding-bottom:4px;color:transparent;-webkit-text-stroke:1.5px rgba(255,106,43,.5);white-space:nowrap;will-change:transform;user-select:none}
+.ht{font-size:20px;font-weight:600;margin:10px 0 4px;position:relative;letter-spacing:-.01em}
 .search{display:flex;align-items:center;gap:10px;height:50px;padding:0 16px;margin:14px 0 10px;border-radius:99px;background:var(--surf);border:1px solid var(--line);color:var(--dim);transition:border-color .2s}
 .search:focus-within{border-color:var(--ember)}
 .search input{flex:1;min-width:0;height:100%;background:none;border:0;outline:0;color:var(--ink);font:inherit;font-size:16px}
@@ -259,7 +259,16 @@ var Q=new URLSearchParams(location.search);
  var eo=function(t){return 1-Math.pow(1-t,3)},eio=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2},backOut=function(t){var s=1.45;return --t*t*((s+1)*t+s)+1};
  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
  var $=function(i){return document.getElementById(i)};
- var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;var hw=$('hw');if(hw&&!reduce)hw.style.transform='translate3d('+(-scrollY*.35)+'px,0,0)'})}},{passive:true});
+ var slack=0;
+ function tw(el){var r=document.createRange();r.selectNodeContents(el);return r.getBoundingClientRect().width}
+ function fit(el,box,max){if(!el||!box)return 0;el.style.fontSize='100px';var w=tw(el);if(!w)return 0;var px=Math.min(max,100*box/w);el.style.fontSize=px+'px';return Math.max(0,box-tw(el))}
+ window.fitWm=function(){
+  var hw=$('hw');if(hw&&hw.offsetParent){slack=fit(hw,hw.parentNode.clientWidth*.94,210);drift()}
+  var wm=document.querySelector('.wm');if(wm){var f=wm.parentNode;fit(wm,f.clientWidth-32,260)}};
+ function drift(){var hw=$('hw');if(hw&&!reduce)hw.style.transform='translate3d('+(slack*Math.min(1,Math.max(0,scrollY/500)))+'px,0,0)'}
+ var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;drift()})}},{passive:true});
+ addEventListener('resize',window.fitWm);addEventListener('hashchange',function(){setTimeout(window.fitWm,0)});
+ window.fitWm();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(window.fitWm);addEventListener('load',window.fitWm);
  /* intro */
  var I=$('intro'),lg=$('lg'),tx=$('tx'),barLogo=$('bar-logo')||document.querySelector('[data-logo]');
  var pcs=[],lts=[],S=Math.min(innerWidth*.56,240);
@@ -379,7 +388,7 @@ var APPS=[];
  }).then(function(list){
   list.filter(Boolean).forEach(function(a){APPS.push(a)});
   window.buildMarquee(APPS.map(function(a){return a.name}));
-  render();route();
+  render();route();window.fitWm&&window.fitWm();
  }).catch(function(){render();route()});
 })();
 </script>
