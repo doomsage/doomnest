@@ -142,7 +142,7 @@ html,body{overflow-x:clip}
 #intro .tx{display:flex;font-weight:900;font-size:clamp(38px,12vw,72px);letter-spacing:-.03em;overflow:hidden;padding:0 4px 6px}
 #intro .tx span{display:inline-block;will-change:transform}
 #intro .sk{position:absolute;bottom:24px;color:var(--dim);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
-@media(min-width:820px){.cw{left:50%;transform-origin:50% 100%}}
+
 </style></head><body>
 <div id="intro"><div class="lg" id="lg"></div><div class="tx" id="tx"></div><div class="sk">Tap to skip</div></div>
 <header class="bar">
@@ -267,7 +267,7 @@ var RELEASE={apkUrl:"",version:""};
    $('ahl').style.transform='translate3d(0,'+lerp(0,-vh*.1,p)+'px,0) scale('+lerp(1,.55,p)+') rotate('+lerp(0,25,p)+'deg)';
    $('ahint').style.transform='translate3d('+(-p*vw*1.2)+'px,0,0)';
    $('aglow').style.transform='translate3d(0,'+(p*-40)+'px,0) scale('+(1+p*.3)+')';
-   $('acw').style.transform=(vw>=820?'translateX(-50%) ':'')+'translate3d(0,'+lerp(vh,0,eo(c01((p-.15)/.6)))+'px,0)';
+   $('acw').style.transform='translate3d(0,'+lerp(vh,0,eo(c01((p-.15)/.6)))+'px,0)';
   }else{var p=prog(B),vw2=vw;
    $('track').style.transform='translate3d('+(-p*2*vw)+'px,0,0)';
    $('g1').style.transform='translate3d('+(p*vw*.55)+'px,0,0)';
