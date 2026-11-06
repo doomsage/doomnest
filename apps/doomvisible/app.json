@@ -1,0 +1,40 @@
+{
+  "id": "doomvisible",
+  "name": "Doomvisible",
+  "developer": "Doomsage",
+  "category": "Tools",
+  "icon": "1-dv-icon.png",
+  "about": "An offline archive of your incoming WhatsApp notifications. Viewing this archive never opens WhatsApp. It captures only content actually delivered in notifications: messages that produce no notification, or content Android hides, may be unavailable. The app has no internet permission. Manual JSON exports are unencrypted and may go to a cloud provider you choose.",
+  "tags": [],
+  "platform": "Android",
+  "package": "com.doomvisible",
+  "offeredBy": "Doomsage",
+  "release": {
+    "apkUrl": "https://github.com/doomsage/doomnest/releases/download/doomvisible-v1.2.0/Doomvisible-1.2.0-release.apk",
+    "version": "1.2.0",
+    "repo": "doomsage/doomnest",
+    "assetPrefix": "Doomvisible"
+  },
+  "screenshots": [
+    "1-dv-1-chats.png",
+    "2-dv-2-timeline.png",
+    "3-dv-3-restricted.png",
+    "4-dv-4-consent.png",
+    "5-dv-5-battery.png"
+  ],
+  "steps": [
+    {
+      "title": "Allow restricted settings (Android 13+)",
+      "text": "Apps installed from an APK may need this once on Android 13+ before sensitive permissions work. Go to Settings > Apps > See all apps > doomvisible > More (3 dots) > Allow restricted settings. Only do this for apps you trust."
+    },
+    {
+      "title": "Agree and turn on notification access",
+      "text": "Open doomvisible and tap I Agree & Continue, then turn on doomvisible in the notification access list that opens. The app reads only WhatsApp notifications and ignores everything else."
+    },
+    {
+      "title": "Set battery to Unrestricted",
+      "text": "In Step 2 of the setup, open battery settings and choose Unrestricted. This may help capture keep running when the screen is off, but Android and phone makers can still pause it."
+    }
+  ],
+  "iconFull": true
+}
